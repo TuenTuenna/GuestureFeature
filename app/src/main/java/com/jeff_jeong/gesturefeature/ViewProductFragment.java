@@ -21,12 +21,13 @@ import com.jeff_jeong.gesturefeature.util.BigDecimalUtil;
 
 import static android.view.KeyCharacterMap.load;
 
+// 제품 프래그먼트 클래스
 public class ViewProductFragment extends Fragment {
 
     private static final String TAG = "ViewProductFragment";
 
     //widgets
-    private ImageView mImageView;
+    public ImageView mImageView;
     private TextView mTitle;
     private TextView mPrice;
 

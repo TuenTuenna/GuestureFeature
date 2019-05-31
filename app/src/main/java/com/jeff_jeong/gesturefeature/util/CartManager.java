@@ -16,6 +16,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
+// 장바구니 관리 클래스
 public class CartManager {
 
     private static final String TAG = "CartManger";

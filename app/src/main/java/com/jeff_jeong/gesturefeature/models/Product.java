@@ -9,6 +9,7 @@ import android.os.Parcelable;
 
 import java.math.BigDecimal;
 
+// 제품 모델 클래스
 public class Product implements Parcelable {
 
     private String title;
