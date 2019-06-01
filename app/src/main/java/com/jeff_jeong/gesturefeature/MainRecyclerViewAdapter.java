@@ -19,6 +19,7 @@ import com.jeff_jeong.gesturefeature.models.Product;
 
 import java.util.ArrayList;
 
+// 메인액티비티 리사이클러뷰 어답터
 public class MainRecyclerViewAdapter extends RecyclerView.Adapter<MainRecyclerViewAdapter.ViewHolder> {
 
     private static final String TAG = "MainRecyclerViewAd";

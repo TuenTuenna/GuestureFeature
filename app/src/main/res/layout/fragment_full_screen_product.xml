@@ -4,6 +4,10 @@
                 android:layout_height="match_parent"
     android:background="@color/Black">
 
-
+    <com.jeff_jeong.gesturefeature.customviews.ScalingImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/image"
+        />
 
 </RelativeLayout>

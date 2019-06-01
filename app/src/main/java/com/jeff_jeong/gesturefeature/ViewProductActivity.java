@@ -13,7 +13,9 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
+import android.support.transition.Fade;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -175,6 +177,27 @@ public class ViewProductActivity extends AppCompatActivity implements View.OnTou
         mCartPositionRectangle.bottom = mCartPositionRectangle.bottom - Math.round((int)(width * 0.03));
     }
 
+    // 전체화면 프래그먼트를 보여주는 메소드
+    private void inflateFullScreenProductFragment(){
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        FullScreenProductFragment fragment = new FullScreenProductFragment();
+
+        Bundle bundle = new Bundle();
+        Product selectedProduct =((ViewProductFragment)mPagerAdapter.getItem(mProductContainerViewPager.getCurrentItem())).mProduct;
+        bundle.putParcelable(getString(R.string.intent_product), selectedProduct);
+        fragment.setArguments(bundle);
+
+        // Enter Transition for New Fragment
+        Fade enterFade = new Fade();
+        enterFade.setStartDelay(1);
+        enterFade.setDuration(300);
+        fragment.setEnterTransition(enterFade);
+
+        transaction.addToBackStack(getString(R.string.fragment_full_screen_product));
+        transaction.replace(R.id.full_screen_container, fragment, getString(R.string.fragment_full_screen_product));
+        transaction.commit();
+    }
+
 
     // 터치가 이루어 질때
     @Override
@@ -285,12 +308,18 @@ public class ViewProductActivity extends AppCompatActivity implements View.OnTou
     @Override
     public boolean onDoubleTap(MotionEvent e) {
         Log.d(TAG, "onDoubleTap: ");
+
+        // 전체 화면 제품 프래그먼트를 보여준다.
+        inflateFullScreenProductFragment();
+
         return false;
+
     }
 
     @Override
     public boolean onDoubleTapEvent(MotionEvent e) {
         Log.d(TAG, "onDoubleTapEvent: ");
+
         return false;
     }
 
